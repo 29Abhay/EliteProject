@@ -1,6 +1,6 @@
 <?php 
 
-require 'persondatabase.php';
+require 'Database/database.php';
 class Person{
 	private  $fname;
 	private  $lname;
