@@ -21,9 +21,17 @@ class Database{
 			         $stmt->execute();
 
                  $conn = new PDO("mysql:host=$this->servername;dbname=institute", $this->username, $this->password);
-                   $createtable="create table if not exists person(fname varchar(40),lname varchar(40),dob date,mobile_no varchar(15) PRIMARY KEY,gender varchar(10),house_no varchar(20),street varchar (50),city varchar(40),district varchar (40),state varchar(20),pincode int(10),email varchar(60))";
+                   $createtable="create table if not exists person(fname varchar(40),lname varchar(40),dob date,mobile_no varchar(15) PRIMARY KEY,gender varchar(10),house_no varchar(20),street varchar (50),city varchar(40),district varchar (40),state varchar(20),pincode int(10),email varchar(60));";
                   $stmt=$conn->prepare($createtable);
 			         $stmt->execute();
+
+			          
+ 
+                 $create_course_qry="CREATE TABLE  IF NOT EXISTS course (c_id int(20) AUTO_INCREMENT primary key,c_name varchar(20),c_duration int(20),c_fees float(20));";
+                      $stmt=$conn->prepare($create_course_qry);
+                      $stmt->execute();
+
+
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			}
 				catch(PDOException $ex){
