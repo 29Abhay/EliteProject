@@ -76,17 +76,33 @@ public function addcourse(){
 
         $data=$stmt->execute();
         return $data;
-              }
-
-catch (PDOException $e) 
+    }
+        catch (PDOException $e) 
          {
   
           if ($e->getCode()==23000)
        {
         $response=array("status"=>0,"status_message"=>"duplicate entry for course id");
+        json_encode($response);
        }
 
            }
+              }
+
+
+              public function getallcourses(){
+              	try{
+              		
+              		$qry="select * from course";
+              		$stmt=$this->conn->prepare($qry);
+              			$stmt->execute();
+              		$data = $stmt->fetchAll( PDO::FETCH_ASSOC );
+
+              		return $data;
+              	}
+              
+
+
 	 
 
 
@@ -94,10 +110,46 @@ catch (PDOException $e)
          catch(PDOException $ex)
            {
             echo "Unsuccessful".$ex->getMessage();
+            $response=array("status"=>0,"status_message"=>"duplicate entry for course id".$ex->getMessage());
+        json_encode($response);
            }
-           return $response; 
+           
 
          }
 
+
+
+
+              public function getcourse(){
+                try{
+                  $this->emp->setc_name(htmlspecialchars($_POST["c_name"]));
+                  $qry="select * from course where c_name=:c_name";
+                  $c_name=$this->emp->getc_name();
+                  $stmt=$this->conn->prepare($qry);
+                  $stmt->bindParam(":c_name",$c_name);
+                    $stmt->execute();
+                  $data = $stmt->fetchAll( PDO::FETCH_ASSOC );
+
+                  return $data;
+                }
+              
+                catch(PDOException $ex)
+                  {
+                    echo "Unsuccessful".$ex->getMessage();
+                    $response=array("status"=>0,"status_message"=>"duplicate entry for course id".$ex->getMessage());
+        json_encode($response);
+                   }  
+              
+
+                }
+
+                   
+        
+              
+
+
+   
+
        }
  ?>
+
