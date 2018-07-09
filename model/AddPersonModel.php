@@ -126,6 +126,24 @@ public function __construct()
 	 	$this->conn=$db->getConnection();
 	 	$this->per=new Person;
 	 }
+	public function getPerson($mobile_no)
+	 {  
+	 	try{ 
+
+	 	      $this->per->setmobile_no($mobile_no);
+	      	 $qry="select * from person where mobile_no=:mobile_no";
+	    
+	       	 $stmt=$this->conn->prepare($qry);
+	       	 $mobile_no=$this->per->getmobile_no();
+            $stmt->bindParam(":mobile_no",$mobile_no);
+            $stmt->execute();
+            $res=$stmt->fetch(PDO::FETCH_ASSOC);
+            return $res;       
+     }  catch(PDOException $ex)
+       {
+            echo "problem database".$ex->getMessage();
+       }
+   }
 	 
 	 public function addPerson()
 	 {  
