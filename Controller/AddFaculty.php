@@ -1,5 +1,5 @@
 <?php 
-require'../model/addfaculty.php';
+require'../model/AddFacultyModel.php';
 $fac=new FacultyInfo();
 $fac=$fac->addFaculty();
 
