@@ -2,8 +2,8 @@
 
 require 'Database/database.php';
 class Faculty{
-	private  $fname;
-	private  $lname;
+  private  $fname;
+  private  $lname;
   private  $dob;
   private  $house_no;
   private  $street;
@@ -12,14 +12,15 @@ class Faculty{
   private  $basic_sal;
   private  $experience;
   private  $joining_date;
-	 
+  private $mob_no;
+   
    public function setfname($fname)
    {
-   	$this->fname=$fname;
+    $this->fname=$fname;
    }
    public function setlname($lname)
    {
-   	$this->lname=$lname;
+    $this->lname=$lname;
    }
    public function setdob($dob)
    {
@@ -55,18 +56,22 @@ class Faculty{
    {
     $this->joining_date=$joining_date;
    }
+    public function setmob_no($mob_no)
+   {
+    $this->mob_no=$mob_no;
+   }
 
    public function getfname()
    {
-   	return $this->fname;
+    return $this->fname;
    }
     public function getlname()
    {
-   	return $this->lname;
+    return $this->lname;
    }
    public function getdob()
    {
-   	return $this->dob;
+    return $this->dob;
    }
    public function gethouse_no()
    {
@@ -96,21 +101,25 @@ class Faculty{
    {
     return $this->joining_date;
    }
+    public function getmob_no()
+   {
+    return $this->mob_no;
+   }
 }
 class FacultyInfo{
-	var $conn;
-	var $fac;
+  var $conn;
+  var $fac;
 public function __construct()
  {
-	 	$db=new Database;
-	 	$this->conn=$db->getConnection();
-	 	$this->fac=new Faculty;
-	 }
-	  public function addFaculty()
-	 {  
+    $db=new Database;
+    $this->conn=$db->getConnection();
+    $this->fac=new Faculty;
+   }
+    public function addFaculty()
+   {  
     try{
-        $qry="INSERT INTO faculty(fname,lname,dob,house_no,street,city,state,basic_sal,experience,joining_date) 
-        VALUES (:fname,:lname,:dob,:house_no,:street,:city,:state,:basic_sal,:experience,:joining_date)";
+        $qry="INSERT INTO faculty(fname,lname,dob,house_no,street,city,state,basic_sal,experience,joining_date,mob_no) 
+        VALUES (:fname,:lname,:dob,:house_no,:street,:city,:state,:basic_sal,:experience,:joining_date,:mob_no)";
       // prepare sql and bind parameters
         $stmt=$this->conn->prepare($qry);
         
@@ -124,6 +133,8 @@ public function __construct()
         $this->fac->setbasic_sal(htmlspecialchars($_POST["basic_sal"]));
         $this->fac->setexperience(htmlspecialchars($_POST["experience"]));
         $this->fac->setjoining_date(htmlspecialchars($_POST["joining_date"]));
+        $this->fac->setmob_no(htmlspecialchars($_POST["mob_no"]));
+
        
         $fname=$this->fac->getfname();
         $lname=$this->fac->getlname();
@@ -135,6 +146,8 @@ public function __construct()
         $basic_sal=$this->fac->getbasic_sal();
         $experience=$this->fac->getexperience();
         $joining_date=$this->fac->getjoining_date();
+        $mob_no=$this->fac->getmob_no();
+        
             
         $stmt->bindParam(':fname', $fname);
         $stmt->bindParam(':lname', $lname);
@@ -146,7 +159,7 @@ public function __construct()
         $stmt->bindParam(':basic_sal', $basic_sal);
         $stmt->bindParam(':experience', $experience);
         $stmt->bindParam(':joining_date', $joining_date);
-
+        $stmt->bindParam(':mob_no',$mob_no);
         $result=$stmt->execute();
            
             if ($result)
@@ -169,8 +182,41 @@ public function __construct()
               }catch(PDOException $ex)
                 {
                    echo "Unsuccessful".$ex->getMessage();
-                 }        	
-	    return $response;
+                 }          
+      return $response;
    }
+   public function getfaculty($mob_no)
+   {
+    $this->fac->setmob_no(htmlspecialchars($_POST["mob_no"]));
+
+    $getqry="select * from faculty where mob_no=:no";
+    
+    $mob=$this->fac->getmob_no();
+    $stmt=$this->conn->prepare($getqry);
+    $stmt->bindParam(':no',$mob);
+    $stmt->execute();
+    $res=$stmt->fetch(PDO::FETCH_ASSOC);
+    return $res;
+
+
+   }
+   public function getAllFaculties($value='')
+   {
+    
+      $allqry="select * from faculty";
+      $stmt=$this->conn->prepare($allqry);
+      $stmt->execute();
+      $data=array();
+
+      while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+      {
+        array_push($data,$row);
+
+      }
+      return $data;
+
+
+   }
+
 }
 ?>
