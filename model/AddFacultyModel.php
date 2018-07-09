@@ -1,6 +1,6 @@
 <?php 
 
-require 'database.php';
+require 'Database/database.php';
 class Faculty{
 	private  $fname;
 	private  $lname;
