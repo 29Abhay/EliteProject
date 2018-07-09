@@ -31,6 +31,12 @@ class Database{
                       $stmt=$conn->prepare($create_course_qry);
                       $stmt->execute();
 
+                       $createfaculty="create table if not exists faculty(fname varchar(30) ,lname  varchar(30),dob date ,house_no varchar(10),street varchar(30),city varchar(30),state varchar(30),basic_sal int(15),experience varchar(20),joining_date date)";
+			       
+			      	  $stmt=$conn->prepare($createfaculty);
+                   	  $stmt->execute();
+
+
 
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			}
