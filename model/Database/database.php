@@ -36,6 +36,15 @@ class Database{
 			      	  $stmt=$conn->prepare($createfaculty);
                    	  $stmt->execute();
 
+    $create_table="create table if not exists admin(mob varchar(15) PRIMARY KEY,password varchar(20),fname varchar(20),lname varchar(20),aadhar_no varchar(20));";
+    $stmt=$conn->prepare($create_table);
+    $result=$stmt->execute();
+    if($result){
+    	echo "table created successfully";
+    }
+    else{
+    	echo "error in table creation";
+    }
 
 
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
