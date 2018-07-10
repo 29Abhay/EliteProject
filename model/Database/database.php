@@ -31,6 +31,14 @@ class Database{
                       $stmt=$conn->prepare($create_course_qry);
                       $stmt->execute();
 
+                      $create_batch_qry="CREATE TABLE  IF NOT EXISTS batch (b_id int(20) primary key,b_time time(1),C_id int(20),start_date date ,foreign key (c_id) references course (c_id)
+                                             on delete cascade
+                                              on update cascade)engine=innodb;";
+                                              
+                      $stmt=$conn->prepare($create_batch_qry);
+                      $stmt->execute();
+                   
+
                        $createfaculty="create table if not exists faculty(fname varchar(30) ,lname  varchar(30),dob date ,house_no varchar(10),street varchar(30),city varchar(30),state varchar(30),basic_sal int(15),experience varchar(20),joining_date date,mob_no varchar(20) PRIMARY KEY)";
 			       
 			      	  $stmt=$conn->prepare($createfaculty);
@@ -38,11 +46,6 @@ class Database{
 
     $create_table="create table if not exists admin(mob varchar(15) PRIMARY KEY,password varchar(20),fname varchar(20),lname varchar(20),aadhar_no varchar(20));";
     $stmt=$conn->prepare($create_table);
-    $result=$stmt->execute();
-     
-
-     $create_login="create table if not exists login(id varchar(20) PRIMARY KEY,password varchar(20),role varchar(20));";
-    $stmt=$conn->prepare($create_login);
     $result=$stmt->execute();
     if($result){
     	echo "table created successfully";
@@ -64,3 +67,5 @@ class Database{
 			
 
  ?>
+
+
