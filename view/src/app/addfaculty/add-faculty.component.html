@@ -1,0 +1,90 @@
+<div containerStyle>
+  <div containerHeadingStyle>
+    <p fontFamilyStyle fontSizeStyle inpTxt="heading" weight="bolder">Add Faculty</p>
+  </div>
+  <div ngDiv id="maintain-gap" fontFamilyStyle>
+    <div id="row-1">
+      <div id="fname" class="arrange margin set-width mb">
+        <label for="f-fname" id="f-fnamelabel" labelField>First Name</label>
+        <input type="text" id="f-fname" inputField>
+      </div>
+      <div id="lname" class="arrange margin set-width mb">
+        <label for="f-lname" id="f-lnamelabel" labelField>Last Name</label>
+        <input type="text" id="f-lname" inputField>
+      </div>
+      <div id="father" class="arrange set-width mb">
+        <label for="f-father" id="f-fatherlabel" labelField>Father's name</label>
+        <input type="text" id="f-father" inputField>
+      </div>
+    </div>
+    <br><br><br><br>
+    <div id="row-2">
+        <div id="dob" class="arrange margin set-width mb">
+          <label for="f-dob" id="f-doblabel" labelField>Date of birth</label>
+          <input type="text" id="f-dob" inputField>
+        </div>
+        <div id="houseno" class="arrange margin set-width mb">
+          <label for="f-houseno" id="f-housenolabel" labelField>House no.</label>
+          <input type="text" id="f-houseno" inputField>
+        </div>
+        <div id="street" class="arrange set-width mb">
+          <label for="f-street" id="f-streetlabel" labelField>Street</label>
+          <input type="text" id="f-street" inputField>
+        </div>
+    </div>
+    <br><br><br><br>
+    <div id="row-3">
+        <div id="state" class="arrange margin set-width color mb">
+              <select comboBox>
+                <option disabled class="color">State</option>
+                <option ></option>
+              </select>
+        </div>
+        <div id="city" class="arrange margin set-width mb">
+            <select comboBox >
+                <option disabled class="color">City</option>
+                <option ></option>
+            </select>
+        </div>
+        <div id="pincode" class="arrange set-width mb">
+            <label for="f-pincode" id="f-pincodelabel" labelField>Pincode</label>
+            <input type="text" id="f-pincode" inputField>
+        </div>
+    </div>
+    <br><br><br><br>
+    <div id="row-4">
+          <div id="skills" class="arrange margin set-width mb">
+              <span>Skill(s)</span>      
+              <div id="skill-content">
+                <div  *ngFor="let skill of skills">
+                  <input type="checkbox" >{{skill.skill}}   
+                </div>
+              </div>
+          </div>
+          <div id="experience" class="arrange margin set-width mb">
+              <select comboBox>
+                <option disabled class="color">Experience</option>
+                <option *ngFor="let exp of experience">{{exp.expr}}</option>
+              </select>
+          </div>
+          <div id="basic-sal" class="arrange set-width mb">
+              <label for="f-basic-sal" id="f-basic-sallabel" labelField>Basic Salary</label>
+              <input type="text" id="f-basic-sal" inputField>
+          </div>
+    </div>
+    <br><br><br><br><br><br>
+    <div id="row-5">
+        <div class="margin arrange set-width mb">
+          <label for="f-aadharno" id="f-aadharnolabel" labelField>Aadhar No.</label>
+          <input type="text" id="f-aadharno" inputField>
+        </div>
+        <div id="submit-btn" class="arrange margin set-width mb">
+            <button submitButton class="submitButton">Submit</button>
+        </div>
+        <div id="reset-btn" class="arrange set-width mb">
+            <button resetButton class="resetButton">Reset</button>
+        </div>
+      </div>
+    <br><br><br><br>
+  </div>
+</div>
