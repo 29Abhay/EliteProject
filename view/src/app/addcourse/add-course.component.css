@@ -1,0 +1,39 @@
+@media screen and (max-width:600px){
+    .set-width{
+        width: 100%!important;
+    }
+    .mb{
+       height: 60px;
+    }
+    #container{
+        height: 385px!important;
+    }
+    #maintain-gap{
+        width: 80%!important;
+    }
+} 
+.arrange{
+    float: left;
+} 
+.margin{ 
+    margin-right: 10%;
+}
+.set-width{
+    width: 25%;
+}
+.submitButton{
+    min-width: 100%!important;
+}
+
+#maintain-gap{
+    padding: 5%;
+    padding-left: 10%;
+    width: 135%;
+}
+#row-3{
+    width: 67%;
+}
+/* #submit-btn,#reset-btn{
+    text-align: center;
+} */
+.color{color: grey;}
