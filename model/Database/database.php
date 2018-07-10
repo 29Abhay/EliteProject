@@ -39,6 +39,11 @@ class Database{
     $create_table="create table if not exists admin(mob varchar(15) PRIMARY KEY,password varchar(20),fname varchar(20),lname varchar(20),aadhar_no varchar(20));";
     $stmt=$conn->prepare($create_table);
     $result=$stmt->execute();
+     
+
+     $create_login="create table if not exists login(id varchar(20) PRIMARY KEY,password varchar(20),role varchar(20));";
+    $stmt=$conn->prepare($create_login);
+    $result=$stmt->execute();
     if($result){
     	echo "table created successfully";
     }
