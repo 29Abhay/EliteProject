@@ -1,0 +1,32 @@
+
+input{
+    width: 70% !important;
+   
+}
+#container{
+    width: 70% !important;
+    height: 300px;
+   }
+mat-form-field{
+    bottom: 25px;
+    width: 70%;
+}
+.subdiv{
+    float: left !important;
+    width: 25% !important;
+}
+
+@media (max-width:600px){
+    label{
+        font-size: 75% !important;
+    }
+} 
+
+button{
+    margin-left:40% !important;
+}
+
+
+
+
+

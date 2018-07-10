@@ -1,0 +1,10 @@
+
+<div containerStyle id="maincontainer"><br>
+ <div> <label for="companyname" id="companynamelabel" labelField>Company Name</label>
+<input  type="text" id="companyname" inputField></div><br><br>
+<div> <label for="collegename" id="collegenamelabel" labelField>College Name</label>
+  <input  type="text" id="collegename" inputField></div><br><br>
+<div><select comboBox>
+  <option *ngFor="let course of courses">{{course.name}}</option>
+</select></div>
+</div>

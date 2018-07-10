@@ -1,0 +1,93 @@
+
+
+<br>
+<div id="container">
+  
+  
+  
+    <div class="subdiv">
+    <label for="first_installment" id="first_installmentlabel" labelField >First installment</label>
+    <input type="number" id="first_installment" inputField>
+   </div>
+   <div class="subdiv">
+       <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Current date">
+    <mat-datepicker-toggle matSuffix [for]="picker" inputField></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field></div>
+   <div class="subdiv">
+    <label for="duefirstinstallment" id="duefirstinstallmentlabel" labelField >Due payment</label>
+    <input type="number" id="duefirstinstallment" inputField>
+   </div>
+   <div class="subdiv">
+        <mat-form-field>
+     <input matInput [matDatepicker]="picker1" placeholder="Due date">
+     <mat-datepicker-toggle matSuffix [for]="picker1" inputField></mat-datepicker-toggle>
+     <mat-datepicker #picker1></mat-datepicker>
+   </mat-form-field></div>
+ 
+   
+
+
+
+
+
+   <div class="subdiv">
+        <label for="second_installment" id="second_installmentlabel" labelField >First installment</label>
+        <input type="number" id="second_installment" inputField>
+       </div>
+       <div class="subdiv">
+           <mat-form-field>
+        <input matInput [matDatepicker]="picker2" placeholder="Current date">
+        <mat-datepicker-toggle matSuffix [for]="picker2" inputField></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field></div>
+       <div class="subdiv">
+        <label for="duesecondinstallment" id="duesecondinstallmentlabel" labelField >Due payment</label>
+        <input type="number" id="duesecondinstallment" inputField>
+       </div>
+       <div class="subdiv">
+            <mat-form-field>
+         <input matInput [matDatepicker]="picker3" placeholder="Due date">
+         <mat-datepicker-toggle matSuffix [for]="picker3" inputField></mat-datepicker-toggle>
+         <mat-datepicker #picker3></mat-datepicker>
+       </mat-form-field></div>
+
+
+
+
+
+
+
+
+
+       <div class="subdiv">
+            <label for="thirdinstallment" id="thirdinstallmentlabel" labelField >First installment</label>
+            <input type="number" id="thirdinstallment" inputField>
+           </div>
+           <div class="subdiv">
+               <mat-form-field>
+            <input matInput [matDatepicker]="picker4" placeholder="Current date">
+            <mat-datepicker-toggle matSuffix [for]="picker4" inputField></mat-datepicker-toggle>
+            <mat-datepicker #picker4></mat-datepicker>
+          </mat-form-field></div>
+           <div class="subdiv">
+            <label for="duesecondinstallment" id="duethirdinstallmentlabel" labelField >Due payment</label>
+            <input type="number" id="duethirdinstallment" inputField>
+           </div>
+           <div class="subdiv">
+                <mat-form-field>
+             <input matInput [matDatepicker]="picker5" placeholder="Due date">
+             <mat-datepicker-toggle matSuffix [for]="picker5" inputField></mat-datepicker-toggle>
+             <mat-datepicker #picker5></mat-datepicker>
+           </mat-form-field></div>
+
+       <button successButton>Pay</button>    
+</div>
+
+
+
+
+
+
+
