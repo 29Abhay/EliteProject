@@ -1,0 +1,10 @@
+select{
+    width: 40% !important;
+}
+#maincontainer{
+    width: 30% !important;
+    height: 180px !important;
+}
+input{
+    width: 40% !important;
+}
