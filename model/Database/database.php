@@ -39,6 +39,13 @@ class Database{
     $create_table="create table if not exists admin(mob varchar(15) PRIMARY KEY,password varchar(20),fname varchar(20),lname varchar(20),aadhar_no varchar(20));";
     $stmt=$conn->prepare($create_table);
     $result=$stmt->execute();
+
+
+    $create_enquiryOcc_qry="CREATE TABLE IF NOT EXISTS enquiry_occupation(mobile_no varchar(15),type varchar(20),organization varchar(20),department varchar(20),
+    	standard varchar(20),FOREIGN KEY (mobile_no) REFERENCES ENQUIRY(mobile_no));"
+    $stmt=$conn->prepare($create_enquiryOcc_qry);
+    $result=$stmt->execute();
+
     if($result){
     	echo "table created successfully";
     }
