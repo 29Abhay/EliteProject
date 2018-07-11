@@ -54,6 +54,10 @@ class Database{
     $stmt=$conn->prepare($create_enquiryOcc_qry);
     $result=$stmt->execute();
 
+     $create_table="create table if not exists login(id varchar(20) PRIMARY KEY,password varchar(20),role varchar(20));";
+    $stmt=$conn->prepare($create_table);
+    $result=$stmt->execute();
+
     if($result){
     	echo "table created successfully";
     }
