@@ -1,37 +1,76 @@
 <?php 
 session_start();
-class Database{
-	var $servername="localhost";
-	var $username="root";
-	var $password="";
+require 'Database/database.php';
+class LoginModel{
+	private $id;
+	private $password;
+ private $role;
+
+ public function setid($id){
+  $this->id=$id;
+ }
+
+ public function setpassword($password){
+  $this->password=$password;
+ }
+
+ public function setrole($role){
+  $this->role=$role;
+ }
+
+public function getid(){
+  return $this->id;
+}
+
+public function getpassword(){
+  return $this->password;
+}
+
+public function getrole(){
+  return $this->role;
+}}
+
+class Login{
+    var $login;
+  var $conn;
+  
+
+  function __construct()
+  
+  {
+    $this->login=new LoginModel;
+    $obj1=new Database;
+      $this->conn=$obj1->getconnection();
+    }
 public function login(){
 try{
-
-$conn= new PDO("mysql:host=$this->servername;dbname=institute",$this->username,$this->password); 
-
-$conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-$id=$_POST['id'];
-$password = $_POST['password'];
-$role=$_POST['role'];
+  
 
 $query = "SELECT * FROM login 
         WHERE id=:id
        and  password=:password and role=:role";
 
-$stmt=$conn->prepare($query);
+
+$id=$this->login->setid(htmlspecialchars($_POST["id"]));
+$password = $this->login->setpassword(htmlspecialchars($_POST["password"]));
+$role=$this->login->setrole(htmlspecialchars($_POST["role"]));
+
+$stmt=$this->conn->prepare($query);
+
+$id=$this->login->getid();
+$password=$this->login->getpassword();
+$role=$this->login->getrole();
 
  $stmt->bindParam(':id',$id);
   $stmt->bindParam(':password',$password);	
    $stmt->bindParam(':role',$role);		
 
 $result=$stmt->execute();
-var_dump($result);
 
 $count =$stmt->rowCount();
 
 if($count==1){
-    $_SESSION["usenameSession"]=$id;
+    $_SESSION["usernameSession"]=$id;
     $_SESSION["passwordSession"]=$password;
     $response=array("status" =>1 ,"status_message" =>"login successfully");
 }
@@ -44,9 +83,12 @@ catch(PDOException $ex){
 		}
 	
 	
-header('Content-Type: application/json');
-echo json_encode($response);
-}}
+/*header('Content-Type: application/json');
+echo json_encode($response);*/
+
+return $response;
+}
+  }
 ?>
 
 
