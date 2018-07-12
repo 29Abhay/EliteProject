@@ -2,7 +2,7 @@
 session_start();
 
 require '../model/AddBatchModel.php';
-//require 'session.php';
+
 
 if (isset($_SESSION['usernameSession']) && isset($_SESSION['passwordSession'])){
 
