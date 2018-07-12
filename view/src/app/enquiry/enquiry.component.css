@@ -1,0 +1,22 @@
+mat-card{
+    width: 70%;
+    margin: auto;
+}
+mat-card-title{
+    color: blue;
+}
+mat-form-field{
+    width: 90%;
+}
+.btn{
+    text-align: center;
+}
+#skills{
+    overflow: auto;
+    width: 90%;
+    height: 25px;
+    padding: 5px;
+}
+mat-radio-button{
+    margin: 5px;
+}

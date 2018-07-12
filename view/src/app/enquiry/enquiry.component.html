@@ -1,0 +1,144 @@
+<mat-card>
+    <div class="container"
+    fxLayout
+    fxLayout.xs="column"
+    fxLayoutAlign="center"
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="0"> 
+  
+        <mat-card-title>Enquiry</mat-card-title>
+    </div>
+    <form class="example-form">
+      <div class="container"
+      fxLayout
+      fxLayout.xs="column"
+      fxLayoutAlign="center"
+      fxLayoutGap="10px"
+      fxLayoutGap.xs="0"> 
+  
+          <div class="item item-1" fxFlex="40%">
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="First name" value="">
+                </mat-form-field>
+          </div>
+          
+          <div class="item item-2" fxFlex="40%">
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Last name" value="">
+              </mat-form-field>
+          </div>
+      
+      </div>  
+     
+      <div class="container"
+      fxLayout
+      fxLayout.xs="column"
+      fxLayoutAlign="center"
+      fxLayoutGap="10px"
+      fxLayoutGap.xs="0">
+  
+          <div class="item item-1" fxFlex="40%">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Mobile number" type="number" value="">
+              </mat-form-field>  
+          </div>
+          
+          <div class="item item-2" fxFlex="40%">
+              <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Gender">
+                    <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                      {{gender.value}}
+                    </mat-option>
+                  </mat-select>
+              </mat-form-field>
+          </div>
+
+      </div>
+  
+      <div class="container"
+      fxLayout
+      fxLayout.xs="column"
+      fxLayoutAlign="center"
+      fxLayoutGap="10px"
+      fxLayoutGap.xs="0">
+  
+          <div class="item item-1" fxFlex="40%">
+              <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Email" type="email" value="">
+              </mat-form-field>        
+            </div>
+            
+            <div class="item item-2" fxFlex="40%">
+                <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Course">
+                      <mat-option *ngFor="let course of courses" [value]="course.value">
+                        {{course.value}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+  
+      </div>
+  
+      <div class="container"
+      fxLayout
+      fxLayout.xs="column"
+      fxLayoutAlign="center"
+      fxLayoutGap="10px"
+      fxLayoutGap.xs="0">
+  
+           <div class="item item-1" fxFlex="40%">
+                <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Address"></textarea>
+                </mat-form-field>
+            </div>
+              
+            <div class="item item-2" fxFlex="40%">
+                <input matInput placeholder="Student Type" disabled><br><br> 
+              <mat-radio-group [(ngModel)]="studentType" name="something">
+                  <mat-radio-button *ngFor="let stud of studentTypes" [value]="stud">{{stud}}</mat-radio-button>
+                </mat-radio-group>
+            </div>
+      </div><br><br>
+        <!-- <mat-checkbox *ngFor="let course of courses">{{course.name}}</mat-checkbox> -->
+      <div class="container"
+      fxLayout
+      fxLayout.xs="column"
+      fxLayoutAlign="center"
+      fxLayoutGap="10px"
+      fxLayoutGap.xs="0">
+  
+              <div class="item item-1" fxFlex="40%">
+                <div id="school" *ngIf="studentType=='School'" >
+                  <app-school-details>Loading...</app-school-details>
+                </div>
+                <div id="college" *ngIf="studentType=='College'">
+                  <app-college>Loading...</app-college>
+                </div>
+                <div id="job" *ngIf="studentType=='Job'">
+                  <app-job>Loading...</app-job>
+                </div>
+              </div>
+  
+      </div>
+      
+      <div class="container"
+      fxLayout
+      fxLayout.xs="column"
+      fxLayoutAlign="center"
+      fxLayoutGap="10px"
+      fxLayoutGap.xs="0">
+  
+                <div class="item item-1 btn" fxFlex="50%">
+                        
+                    <button mat-raised-button color="primary" class="example-full-width">Submit</button>
+                </div>
+                <br>
+                <div class="item item-2 btn" fxFlex="50%">
+                    <button mat-stroked-button color="primary">Reset</button>
+                </div>
+
+      </div>
+      
+    </form>
+  </mat-card>
