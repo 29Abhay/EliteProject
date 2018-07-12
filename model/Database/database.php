@@ -31,11 +31,28 @@ class Database{
                       $stmt=$conn->prepare($create_course_qry);
                       $stmt->execute();
 
-                      $create_batch_qry="CREATE TABLE  IF NOT EXISTS batch (b_id int(20) primary key,b_time time(1),C_id int(20),start_date date ,foreign key (c_id) references course (c_id)
+                      $create_batch_qry="CREATE TABLE  IF NOT EXISTS batch (b_id int(20) primary key,b_time time(1),c_id int(20),start_date date ,foreign key (c_id) references course (c_id)
                                              on delete cascade
                                               on update cascade)engine=innodb;";
                                               
                       $stmt=$conn->prepare($create_batch_qry);
+                      $stmt->execute();
+
+                       $create_teach_qry="CREATE TABLE  IF NOT EXISTS teach ( mob_no varchar(20), b_id int(20) ,foreign key (mob_no) references faculty (mob_no)
+                                             on delete cascade
+                                              on update cascade ,foreign key (b_id) references batch (b_id)
+                                             on delete cascade
+                                              on update cascade)engine=innodb;";
+                                              
+                      $stmt=$conn->prepare($create_teach_qry);
+                      $stmt->execute();
+
+
+                       $create_skill_qry="CREATE TABLE  IF NOT EXISTS faculty_skills ( mob_no varchar(20), skill varchar(40) ,foreign key (mob_no) references faculty (mob_no)
+                                             on delete cascade
+                                              on update cascade)engine=innodb;";
+                                              
+                      $stmt=$conn->prepare($create_skill_qry);
                       $stmt->execute();
                    
 
@@ -66,8 +83,15 @@ class Database{
 
     $create_demo_qry="CREATE TABLE IF NOT EXISTS demo(start_date date,demo1 varchar(20),demo2 varchar(20),demo3 varchar(20),enquiry_id int,batch_id int(20),status varchar(20) DEFAULT 'NO',
       FOREIGN KEY(enquiry_id) REFERENCES enquiry(enquiry_id), FOREIGN KEY (batch_id) REFERENCES batch(b_id));";
+/*
+    if($result){
+    	echo "table created successfully";
+    }
+    else{
+    	echo "error in table creation";
+    }
 
-
+*/
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			}
 				catch(PDOException $ex){
@@ -76,6 +100,9 @@ class Database{
 				return $conn;
 			}
 			}
-?>
+
+			
+
+ ?>
 
 
