@@ -50,13 +50,13 @@ class Database{
 
 
     $create_enquiryOcc_qry="CREATE TABLE IF NOT EXISTS enquiry_occupation(mobile_no varchar(15),type varchar(20),organization varchar(20),department varchar(20),
-    	standard varchar(20),FOREIGN KEY (mobile_no) REFERENCES ENQUIRY(mobile_no));"
+    	standard varchar(20),FOREIGN KEY (mobile_no) REFERENCES ENQUIRY(mobile_no));";
     $stmt=$conn->prepare($create_enquiryOcc_qry);
     $result=$stmt->execute();
 
 
      $create_enquiry="CREATE TABLE IF NOT EXISTS enquiry(enquiry_id int PRIMARY KEY AUTO_INCREMENT,mobile_no varchar(15),c_id int(20),enquiry_date date,
-                    FOREIGN KEY (mobile_no) REFERENCES person(mobile_no),FOREIGN KEY (c_id) REFERENCES course(c_id));"
+                    FOREIGN KEY (mobile_no) REFERENCES person(mobile_no),FOREIGN KEY (c_id) REFERENCES course(c_id));";
     $stmt=$conn->prepare($create_enquiry);
     $result=$stmt->execute();
 
@@ -65,14 +65,7 @@ class Database{
     $result=$stmt->execute();
 
     $create_demo_qry="CREATE TABLE IF NOT EXISTS demo(start_date date,demo1 varchar(20),demo2 varchar(20),demo3 varchar(20),enquiry_id int,batch_id int(20),status varchar(20) DEFAULT 'NO',
-      FOREIGN KEY(enquiry_id) REFERENCES enquiry(enquiry_id), FOREIGN KEY (batch_id) REFERENCES batch(b_id));"
-
-    if($result){
-    	echo "table created successfully";
-    }
-    else{
-    	echo "error in table creation";
-    }
+      FOREIGN KEY(enquiry_id) REFERENCES enquiry(enquiry_id), FOREIGN KEY (batch_id) REFERENCES batch(b_id));";
 
 
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -83,9 +76,6 @@ class Database{
 				return $conn;
 			}
 			}
-
-			
-
- ?>
+?>
 
 
