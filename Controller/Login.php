@@ -1,6 +1,9 @@
 <?php 
 require '../Model/login.php';
-$obj=new Database;
-$obj->login();
+$obj=new Login;
+$res=$obj->login();
+
+header('Content-Type: application/json');
+echo json_encode($res);
  
  ?>
