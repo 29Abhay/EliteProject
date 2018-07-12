@@ -1,22 +1,21 @@
 <?php 
 session_start();
 
-require '../model/AddCourseModel.php';
+require '../model/AddBatchModel.php';
+//require 'session1.php';
 
-
-if (isset($_SESSION['usernameSession']) AND isset($_SESSION['passwordSession'])){
+if (isset($_SESSION['usernameSession']) && isset($_SESSION['passwordSession'])){
 
 
 
          $response=array("status"=>1,"status_message"=>"valid");
           
 
-
            
              
           
-$emp=new courseInfo();
-$data=$emp->getcourse();
+$emp=new batchInfo();
+$data=$emp->getallbatches();
   if ($data)
           {  
             
@@ -46,25 +45,13 @@ $data=$emp->getcourse();
 
                   header("Content-Type: Application/json");
                  echo json_encode($response);
-                
+                 
 
 
  
        
 
  ?>
-
-
-
-
-
-
-
-
-
-       
-
-
 
 
 

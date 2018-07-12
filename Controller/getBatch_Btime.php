@@ -1,10 +1,10 @@
 <?php 
 session_start();
 
-require '../model/AddCourseModel.php';
+require '../model/AddBatchModel.php';
 
 
-if (isset($_SESSION['usernameSession']) AND isset($_SESSION['passwordSession'])){
+if (isset($_SESSION['usernameSession']) && isset($_SESSION['passwordSession'])){
 
 
 
@@ -15,8 +15,8 @@ if (isset($_SESSION['usernameSession']) AND isset($_SESSION['passwordSession']))
            
              
           
-$emp=new courseInfo();
-$data=$emp->getcourse();
+$emp=new batchInfo();
+$data=$emp->getbatch_time();
   if ($data)
           {  
             
@@ -53,18 +53,6 @@ $data=$emp->getcourse();
        
 
  ?>
-
-
-
-
-
-
-
-
-
-       
-
-
 
 
 
