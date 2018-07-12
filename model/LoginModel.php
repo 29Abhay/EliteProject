@@ -31,8 +31,8 @@ var_dump($result);
 $count =$stmt->rowCount();
 
 if($count==1){
-    $_SESSION["id"]=$id;
-    $_SESSION["password"]=$password;
+    $_SESSION["usenameSession"]=$id;
+    $_SESSION["passwordSession"]=$password;
     $response=array("status" =>1 ,"status_message" =>"login successfully");
 }
 else{
