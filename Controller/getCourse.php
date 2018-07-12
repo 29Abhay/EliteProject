@@ -4,7 +4,7 @@ session_start();
 require '../model/AddCourseModel.php';
 
 
-if (isset($_SESSION['usernameSession']) AND sset($_SESSION['passwordSession'])){
+if (isset($_SESSION['usernameSession']) AND isset($_SESSION['passwordSession'])){
 
 
 
