@@ -1,6 +1,6 @@
 <?php 
 
-require 'database.php';
+require 'Database/database.php';
 class Enquiry{
   private $enquiry_id;
 	private  $mobile_no;
