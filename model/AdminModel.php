@@ -1,5 +1,4 @@
 <?php 
-session_start();
 require 'Database/database.php';
 class Admin{
 private $mob;
@@ -53,8 +52,7 @@ class AdminInfo{
     }
 
 public function addadmin(){
-  if(isset($_SESSION['usernameSession']) and isset($_SESSION['passwordSession'])){
-try{
+  try{
 			
 
 		$qry="insert into admin(mob,password,fname,lname,aadhar_no) values(:mob,:password,:fname,:lname,:aadhar_no)";
@@ -96,11 +94,7 @@ $response=array("status" =>0 ,"status_message" =>"error in inserting");
 		$response=array("status" =>0 ,"status_message" =>"duplicate entry for mob");
 	}
 } 
-}
-else
-{
-    $response=array("status" =>0 ,"status_message" =>"invalid operation");
-}
+
 return $response;  
    }
       }

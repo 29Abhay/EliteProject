@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
 require 'Database/database.php';
 class Occupation{
 private $mob;
