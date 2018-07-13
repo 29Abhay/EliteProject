@@ -2,7 +2,7 @@
 <?php 
  session_start();         
 if (isset($_SESSION['usernameSession']) or isset($_SESSION['passwordSession'])){ 
-require '../model/AddTeachModel.php';          
+require '../model/TeachModel.php';          
 $emp=new teachInfo();
 $response=$emp->addteach();
 }
