@@ -83,6 +83,8 @@ class Database{
 
     $create_demo_qry="CREATE TABLE IF NOT EXISTS demo(start_date date,demo1 varchar(20),demo2 varchar(20),demo3 varchar(20),enquiry_id int,batch_id int(20),status varchar(20) DEFAULT 'NO',
       FOREIGN KEY(enquiry_id) REFERENCES enquiry(enquiry_id), FOREIGN KEY (batch_id) REFERENCES batch(b_id));";
+$stmt=$conn->prepare($create_demo_qry);
+    $result=$stmt->execute();
 
 				$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 			}
