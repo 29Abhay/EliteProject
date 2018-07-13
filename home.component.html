@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<i class="fas fa-bars" id="menubutton" (click)="menutoggle()"></i>
+<div id="navbar" navStyle fontFamilyStyle fontSizeStyle>
+    <img src="https://content.jdmagicbox.com/comp/indore/r3/0731px731.x731.161020113038.k6r3/logo/3n117fd22bjcjqdowcowzij6jq6lhqkj.jpg" alt="eliteimage" id="logo">&nbsp;
+
+    
+<div id="mainmenu">
+
+    <a routerLink='enquiry' id="enquiry">Enquiry</a>&nbsp;&nbsp;
+    <a>Registration</a>&nbsp;&nbsp;
+    <a>Payment</a>&nbsp;&nbsp;
+    <i class="fas fa-cog" (click)="settingtoggle()" [@settingIconAnimation]="menuIconState"></i>
+</div>
+
+</div>
+
+<br>
+<div id="slidemenubar" [@menuanimation]="menustate">
+    <br>
+<a class="menuhover">Enquiry</a> <br><br>
+<a class="menuhover">Registration</a> <br><br>
+<a class="menuhover">Payment</a> <br><br>
+<a (click)="settingsmalltoggle()" class="menuhover">Settings</a> <br>
+
+<div id="mainsetting" [@settinganimation]="settingstate">
+    <br>
+<a class="settingoption" >Add admin</a> <br>
+<a  class="settingoption">Help</a> <br>
+<a  class="settingoption">History</a> <br>
+<a  class="settingoption">Log out</a> <br>
+
+</div>
+</div>
+
+    
+    
+<div id="mobilesetting" [@settingsmallanimation]="settingsmallstate">
+        <br>
+    <a class="mobilesettingoption">Add admin</a> <br>
+    <a class="mobilesettingoption">help</a> <br>
+    <a class="mobilesettingoption">history</a> <br>
+    <a class="mobilesettingoption">log out</a> <br>
+    
+</div>
+<div id="outlet-area" style="margin-top: -180px"> 
+<router-outlet></router-outlet>
+</div>
