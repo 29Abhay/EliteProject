@@ -3,8 +3,8 @@
 
 require 'database/database.php';
 class teach{
-  public $mob_no;
-	public $b_id;
+  private $mob_no;
+private $b_id;
 	
 
   public function setmob_no($mob_no)
@@ -68,7 +68,7 @@ public function addteach(){
           if ($e->getCode()==23000)
        {
         $response=array("status"=>0,"status_message"=>"duplicate entry");
-        json_encode($response);
+        return $result;
        }
 
            }

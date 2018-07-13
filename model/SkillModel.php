@@ -3,8 +3,8 @@
 
 require 'database/database.php';
 class skill{
-  public $mob_no;
-	public $skill;
+  private $mob_no;
+private $skill;
 	
 
   public function setmob_no($mob_no)
@@ -67,8 +67,8 @@ public function addskill(){
   
           if ($e->getCode()==23000)
        {
-        $response=array("status"=>0,"status_message"=>"duplicate entry");
-        json_encode($response);
+        $result=array("status"=>0,"status_message"=>"duplicate entry");
+        return $result;
        }
 
            }
