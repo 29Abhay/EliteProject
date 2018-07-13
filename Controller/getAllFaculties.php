@@ -1,17 +1,21 @@
 <?php 
-require '../model/addfaculty.php';
 
 
-$url=$_SERVER["REQUEST_URI"];
-$temp=explode('/',$url);
-$attr=end($temp);
-if ($attr=='all') {
+
+if (isset($_SESSION["username"]) && $_SESSION["password"]) {
+	require '../model/addFacultyModel.php';
 	$fac=new FacultyInfo;
 	$res=$fac->getAllFaculties();
+
+}
+else
+{
+	$res=array("status"=>0,"status message"=>"invalid operation");
+}
 
 header("Content-Type: Application/json");
 
 echo json_encode($res);
-}
+
 
 ?>
