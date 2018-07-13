@@ -26,7 +26,7 @@ $data=$emp->addbatch();
           }
          else
          {
-            $response=array("status"=>0,"status_message"=>"error fetching data");
+            $response=array("status"=>0,"status_message"=>"error inserting data or may be incorrect entries");
              
           
        
