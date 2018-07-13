@@ -1,0 +1,38 @@
+
+<mat-card>
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center">
+  <div fxflex="50%">
+     <!-- <form class="example-form"> -->
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter Company Name" >
+      </mat-form-field>
+    <!-- </form> -->
+  </div>
+</div>
+
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <div fxflex="50%">
+     <!-- <form class="example-form"> -->
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Enter Collage Name" >
+      </mat-form-field>
+  </div>
+</div>
+
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+  <div fxflex="50%">
+    <mat-form-field>
+      <mat-select placeholder="Courses">
+        <mat-option *ngFor="let course of courses" [value]="Courses">
+          {{course.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>
+</mat-card>
+<!--   
+<div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center">
+
+</div>  -->
