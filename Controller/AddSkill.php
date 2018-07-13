@@ -1,7 +1,7 @@
 <?php 
       session_start();    
 if (isset($_SESSION['usernameSession']) or isset($_SESSION['passwordSession'])){ 
-require '../model/AddSkillModel.php';
+require '../model/SkillModel.php';
 $emp=new skillInfo();
 $response=$emp->addskill();
 }
