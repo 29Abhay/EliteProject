@@ -13,11 +13,14 @@ class Faculty{
   private  $experience;
   private  $joining_date;
   private $mob_no;
+  private $profilePic;
+ 
    
    public function setfname($fname)
    {
     $this->fname=$fname;
    }
+   
    public function setlname($lname)
    {
     $this->lname=$lname;
@@ -59,6 +62,11 @@ class Faculty{
     public function setmob_no($mob_no)
    {
     $this->mob_no=$mob_no;
+   }
+
+    public function setProfilePic($profile)
+   {
+    $this->profilePic=$profile;
    }
 
    public function getfname()
@@ -105,12 +113,18 @@ class Faculty{
    {
     return $this->mob_no;
    }
+
+    public function getProfilePic()
+   {      
+         return $this->profilePic;
+   }
+
 }
 class FacultyInfo{
   var $conn;
   var $fac;
-public function __construct()
- {
+  public function __construct()
+  {
     $db=new Database;
     $this->conn=$db->getConnection();
     $this->fac=new Faculty;
@@ -118,8 +132,8 @@ public function __construct()
     public function addFaculty()
    {  
     try{
-        $qry="INSERT INTO faculty(fname,lname,dob,house_no,street,city,state,basic_sal,experience,joining_date,mob_no) 
-        VALUES (:fname,:lname,:dob,:house_no,:street,:city,:state,:basic_sal,:experience,:joining_date,:mob_no)";
+        $qry="INSERT INTO faculty(fname,lname,dob,house_no,street,city,state,basic_sal,experience,joining_date,mob_no,profile_pic) 
+        VALUES (:fname,:lname,:dob,:house_no,:street,:city,:state,:basic_sal,:experience,:joining_date,:mob_no,:pic)";
       // prepare sql and bind parameters
         $stmt=$this->conn->prepare($qry);
         
@@ -134,8 +148,13 @@ public function __construct()
         $this->fac->setexperience(htmlspecialchars($_POST["experience"]));
         $this->fac->setjoining_date(htmlspecialchars($_POST["joining_date"]));
         $this->fac->setmob_no(htmlspecialchars($_POST["mob_no"]));
+        
 
-       
+        $temp_loc=$_FILES["myfile"]["tmp_name"];
+        var_dump($temp_loc);
+        $perm_loc="uploads/".$_FILES["myfile"]["name"];
+        $this->fac->setProfilePic($perm_loc);
+
         $fname=$this->fac->getfname();
         $lname=$this->fac->getlname();
         $dob=$this->fac->getdob();
@@ -147,8 +166,9 @@ public function __construct()
         $experience=$this->fac->getexperience();
         $joining_date=$this->fac->getjoining_date();
         $mob_no=$this->fac->getmob_no();
-        
+        $perm_locc=$this->fac->getProfilePic();
             
+
         $stmt->bindParam(':fname', $fname);
         $stmt->bindParam(':lname', $lname);
         $stmt->bindParam(':dob', $dob);
@@ -160,12 +180,19 @@ public function __construct()
         $stmt->bindParam(':experience', $experience);
         $stmt->bindParam(':joining_date', $joining_date);
         $stmt->bindParam(':mob_no',$mob_no);
+        $stmt->bindParam(':pic',$perm_locc);
+
+        move_uploaded_file($temp_loc, $perm_locc);
+        
         $result=$stmt->execute();
            
             if ($result)
           {  
              echo "succesfully inserted data";
-             $response=array("status"=>1,"status_message"=>"data inserted ");
+             $response=array("status"=>1,"status_message"=>"data inserted");
+            
+             var_dump($response);
+
           }
            else
             {
@@ -182,25 +209,31 @@ public function __construct()
               }catch(PDOException $ex)
                 {
                    echo "Unsuccessful".$ex->getMessage();
-                 }          
+                 }   
+
       return $response;
-   }
+   
+ }
+
    public function getfaculty($mob_no)
    {
-    $this->fac->setmob_no(htmlspecialchars($_POST["mob_no"]));
+    
+    $this->fac->setmob_no(htmlspecialchars($_POST["mobile_no"]));
 
     $getqry="select * from faculty where mob_no=:no";
     
     $mob=$this->fac->getmob_no();
     $stmt=$this->conn->prepare($getqry);
     $stmt->bindParam(':no',$mob);
-    $stmt->execute();
+    $result=$stmt->execute();
+    //var_dump($result);
     $res=$stmt->fetch(PDO::FETCH_ASSOC);
+  
     return $res;
 
-
    }
-   public function getAllFaculties($value='')
+
+   public function getAllFaculties()
    {
     
       $allqry="select * from faculty";
@@ -219,4 +252,5 @@ public function __construct()
    }
 
 }
+
 ?>
