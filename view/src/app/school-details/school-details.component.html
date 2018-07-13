@@ -1,0 +1,106 @@
+<mat-card>
+  <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center">
+    <div fxflex="100%">
+      <mat-form-field>
+        <input matInput placeholder="School Name">
+      </mat-form-field>       
+    </div>
+  </div>  
+
+  <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center">
+    <div fxflex="100%">
+      <mat-form-field>
+        <mat-select placeholder="Select Class" [(value)]="term" (selectionChange)="classfunction()" >
+          <mat-option value="8" >8&#x1D57;&#x02B0;</mat-option>
+          <mat-option value="9" >9&#x1D57;&#x02B0;</mat-option>
+          <mat-option value="10">10&#x1D57;&#x02B0;</mat-option>
+          <mat-option value="11maths">11&#x1D57;&#x02B0;(Maths)</mat-option>
+          <mat-option value="11commerce">11&#x1D57;&#x02B0;(Commerce)</mat-option>
+          <mat-option value="11bio">11&#x1D57;&#x02B0;(Bio)</mat-option>
+          <mat-option value="12maths">12&#x1D57;&#x02B0;(Maths)</mat-option>
+          <mat-option value="12commerce">12&#x1D57;&#x02B0;(Commerce)</mat-option>
+          <mat-option value="12bio">12&#x1D57;&#x02B0;(Bio)</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>  
+
+  <div class="container" fxLayout="row" fxLayout.xs="column" fxLayoutWrap fxLayoutGap="10px" fxLayoutAlign="center">
+    <div fxflex="100%">
+      <div *ngIf="eigth">
+        <mat-checkbox>Maths</mat-checkbox>
+        <mat-checkbox>Social Science</mat-checkbox>
+        <mat-checkbox>Science</mat-checkbox><br>
+        <mat-checkbox>Hindi</mat-checkbox>
+        <mat-checkbox>English</mat-checkbox>
+        <mat-checkbox>Sanskrit</mat-checkbox>
+      </div>
+     
+      <div *ngIf="ninth">
+        <mat-checkbox>Maths</mat-checkbox>
+        <mat-checkbox>Physics</mat-checkbox>
+        <mat-checkbox>Chemistry</mat-checkbox><br>
+        <mat-checkbox>Social Science</mat-checkbox>
+        <mat-checkbox>Hindi</mat-checkbox>
+        <mat-checkbox>English</mat-checkbox>
+      </div>
+    
+      <div *ngIf="tenth">
+        <mat-checkbox>Maths</mat-checkbox>
+        <mat-checkbox>Physics</mat-checkbox>
+        <mat-checkbox>Chemistry</mat-checkbox><br>
+        <mat-checkbox>Social Science</mat-checkbox>
+        <mat-checkbox>Hindi</mat-checkbox>
+        <mat-checkbox>English</mat-checkbox>
+      </div>
+      
+      <div *ngIf="eleventhcomm">
+        <mat-checkbox>Accounts</mat-checkbox>
+        <mat-checkbox>Bussiness Studies</mat-checkbox>
+        <mat-checkbox>I.P.</mat-checkbox><br>
+        <mat-checkbox>English</mat-checkbox>
+      </div>
+     
+      <div *ngIf="eleventhmaths">
+        <mat-checkbox>Maths</mat-checkbox>
+        <mat-checkbox>Physics</mat-checkbox>
+        <mat-checkbox>Chemistry</mat-checkbox><br>
+        <mat-checkbox>English</mat-checkbox>
+        <mat-checkbox>I.P.</mat-checkbox>
+      </div>
+     
+      <div *ngIf="eleventhbio">
+        <mat-checkbox>Biology</mat-checkbox>
+        <mat-checkbox>Maths</mat-checkbox>
+        <mat-checkbox>Physics</mat-checkbox><br>
+        <mat-checkbox>Chemistry</mat-checkbox>
+        <mat-checkbox>English</mat-checkbox>
+        <mat-checkbox>I.P.</mat-checkbox>
+      </div>
+    
+      <div *ngIf="twelfthcomm">
+        <mat-checkbox>Accounts</mat-checkbox>
+        <mat-checkbox>Bussiness Studies</mat-checkbox>
+        <mat-checkbox>I.P.</mat-checkbox><br>
+        <mat-checkbox>English</mat-checkbox>
+      </div>
+    
+      <div *ngIf="twelfthmaths">
+        <mat-checkbox>Maths</mat-checkbox>
+        <mat-checkbox>Physics</mat-checkbox>
+        <mat-checkbox>Chemistry</mat-checkbox><br>
+        <mat-checkbox>English</mat-checkbox>
+        <mat-checkbox>I.P.</mat-checkbox>
+      </div>
+    
+      <div *ngIf="twelfthbio">
+        <mat-checkbox>Biology</mat-checkbox>
+        <mat-checkbox>Maths</mat-checkbox>
+        <mat-checkbox>Physics</mat-checkbox><br>
+        <mat-checkbox>Chemistry</mat-checkbox>
+        <mat-checkbox>English</mat-checkbox>
+        <mat-checkbox>I.P.</mat-checkbox>
+      </div>   
+    </div>
+  </div>    
+</mat-card>
