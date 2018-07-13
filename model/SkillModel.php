@@ -1,9 +1,10 @@
 
 <?php 
 require 'database/database.php';
-class teach{
+
+   class skill1{
   private $mob_no;
-	private $b_id;
+	private $skill;
 	
 
   public function setmob_no($mob_no)
@@ -11,9 +12,9 @@ class teach{
     $this->mob_no=$mob_no;
    }
 	 
-   public function setb_id($b_id)
+   public function setskill($skill)
    {
-   	$this->b_id=$b_id;
+   	$this->skill=$skill;
    }
    
 
@@ -23,47 +24,47 @@ class teach{
     return $this->mob_no;
    }
 
-    public function getb_id()
+    public function getskill()
    {
-   	return $this->b_id;
+   	return $this->skill;
    }
    
 }
-class teachInfo{
+class skillInfo{
 	var $conn;
 	var $emp;
 public function __construct()
 	 {
 	 	$db=new Database;
 	 	$this->conn=$db->getConnection();
-	 	$this->emp=new teach;
+	 	$this->emp=new skill1;
 	 }
 	
   
 
-	 	
-public function addteach(){
-         
-           $this->emp->setmob_no(htmlspecialchars($_POST["mob_no"]));   
-        $this->emp->setb_id(htmlspecialchars($_POST["b_id"]));
-      
+public function addskill(){
+            
+          
+        $this->emp->setmob_no(htmlspecialchars($_POST["mob_no"]));
+        $this->emp->setskill(htmlspecialchars($_POST["skill"]));
         
-       $qry="INSERT INTO `teach`(`mob_no`,`b_id` ) VALUES (:mob_no,:b_id);";
+       $qry="INSERT INTO `faculty_skills`(`mob_no`, `skill` ) VALUES (:mob_no,:skill);";
        $stmt=$this->conn->prepare($qry);
 
       $mob_no=$this->emp->getmob_no();
-       $b_id=$this->emp->getb_id();
+       $skill=$this->emp->getskill();
        
-       $stmt->bindParam(":b_id",$b_id);
+      
        $stmt->bindParam(":mob_no",$mob_no);
+        $stmt->bindParam(":skill",$skill);
       
 
         $data=$stmt->execute();
-       
+    
      if ($data)
           {  
 
-                  $response=array("status"=>1,"status_message"=>"data inserted");       
+                  $response=array("status"=>1,"status_message"=>"data inserted");
      }
          else
          {
@@ -72,11 +73,19 @@ public function addteach(){
       
          }
 
-    return $response;
+
+      
+
+return $response;
+
+                   
         
-    
-  }
+              
+
+
+   
 
        }
+     }
  ?>
 
