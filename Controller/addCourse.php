@@ -1,11 +1,11 @@
 <?php 
 session_start();
 
-require '../model/AddCourseModel.php';
+
 
 if (isset($_SESSION['usernameSession']) && isset($_SESSION['passwordSession'])){
 
-
+require '../model/AddCourseModel.php';
 
          $response=array("status"=>1,"status_message"=>"valid");
           
