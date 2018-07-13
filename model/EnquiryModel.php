@@ -90,7 +90,7 @@ class Enquiry{
                 else
                   {
                      $this->enq->setenquiry_date(strtolower(htmlspecialchars($_POST["enquiry_date"])));
-                     //$this->enq->setenquiry_date(strtolower("enquiry_date"));
+                     
           	       	 $qry="select * from enquiry where MONTHNAME(enquiry_date)=:month";
           	       	 $stmt=$this->conn->prepare($qry);
           	       	 $enquiry_date=$this->enq->getenquiry_date();
@@ -105,7 +105,7 @@ class Enquiry{
                      
                     if($arr)
                     {  
-                      echo "data found";
+                      
                       $response=array("status"=>1,"status_message"=>"data found","data"=>$arr);
                     }
                     else
@@ -143,7 +143,7 @@ class Enquiry{
                      
                     if($res)
                     {  
-                      echo "data found";
+                      
                       $response=array("status"=>1,"status_message"=>"data found","data"=>$res);
                     }
                     else
@@ -193,7 +193,7 @@ class Enquiry{
     	    
               if($res)
              {  
-              echo "data found";
+              
               $response=array("status"=>1,"status_message"=>"data found","data"=>$res);
              }
              else
@@ -229,7 +229,7 @@ class Enquiry{
                 
                 if($res)
                 {  
-                echo "data found";
+                
                 $response=array("status"=>1,"status_message"=>"data found ","data"=>$res);
                 }
                 else
@@ -273,7 +273,7 @@ class Enquiry{
            
             if($result)
           {  
-            echo "succesfully inserted data";
+            
           $response=array("status"=>1,"status_message"=>"data inserted ");
           }
          else
