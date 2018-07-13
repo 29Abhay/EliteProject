@@ -1,0 +1,14 @@
+<div id="modelContainer">
+<mat-dialog-content>
+  <div id="modelHeader">
+   <p>ASSIGN</p></div>
+   <p> First name is : <b>{{data.fname}}</b></p>
+   <p> Last name is : <b>{{data.lname}}</b></p>
+   <p> Mobile no. is : <b>{{data.mobileNo}}</b></p>
+   <p> Batch is : <b>{{data.batch}}</b></p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>No,Thanks</button>
+  <button  mat-button Mat-raised-button (click)="save()">Submit</button>
+</mat-dialog-actions>
+</div>

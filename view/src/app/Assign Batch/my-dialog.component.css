@@ -1,0 +1,14 @@
+#modelHeader{
+   
+    color: black;
+    height: 30px;
+    width: 100%;
+    padding: 0px !important;
+    text-align: center;
+    margin-top: 0px;
+    
+}
+
+#modelContainer{
+    font-size: 17px;
+}

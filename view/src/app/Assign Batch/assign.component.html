@@ -1,0 +1,28 @@
+ <br>
+    <table border="0px" cellpadding="10px" align="center" cellspacing="0px">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Mobile No. </th>
+            <th>Courses</th>
+            <th>Batch</th>
+            <th>Select</th>
+        </tr>
+        <tr *ngFor="let student of students">
+             <td>{{student.FName}}</td>
+             <td>{{student.LName}}</td> 
+             <td>{{student.MobileNo}}</td>
+             <td>{{student.Courses}}</td>
+             <td><mat-form-field>
+                    <mat-select name="batch" placeholder="Batch">
+                      <mat-option  *ngFor="let batch of batchs" [value]="batch.value" (click)="get(batch.value)">
+                        {{batch.name}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field></td>
+          
+            <td><button   (click)="setResult(student.FName,student.LName,student.MobileNo)" mat-button mat-raised-button (click)="openDialog()">Assign</button></td>
+        </tr> 
+    </table>
+
+ 
