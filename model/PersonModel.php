@@ -213,7 +213,7 @@ class PersonInfo{
            
             if ($result)
           {  
-            echo "succesfully inserted data";
+            
           $response=array("status"=>1,"status_message"=>"data inserted ");
           }
          else
