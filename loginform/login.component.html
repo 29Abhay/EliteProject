@@ -1,0 +1,35 @@
+
+<head>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+</head>
+
+<div id="container">
+    <header id="containerHeadingBackgroundStyle">
+    <title   id="title">Login Form</title>
+    </header>
+    <br><br><br><br>
+     <i  id="usericon" class="fas fa-user fa-5x"></i>
+  
+  <div id="login">
+        <label id="namelabel" labelField for="name">Name</label>
+        <input inputField type="text" [(ngModel)]="input_name" id="name" name="name" required> 
+        <p id="name-required"></p>
+        <br><br>
+<br><br>
+<label id="passlabel" labelField for="pass" id="passlabel">Password</label>
+<input inputField type="Password" [(ngModel)]="input_pass" name="pass" id="pass" required>
+<p id="pass-required"></p>
+<button  id="showpass"><i class="far fa-eye" id="show-hide-icon"></i></button>
+
+<button id="loginbtn" (mouseover)="validate()" routerLink={{check}}>Login</button>&nbsp;
+<a  id="forgotpass" href="#">Forgot password?</a>
+</div>
+
+</div>
+<div>
+    <router-outlet></router-outlet>
+</div>
+
+
+  
+      
