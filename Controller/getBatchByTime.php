@@ -1,11 +1,11 @@
 <?php 
 session_start();
 
-require '../model/AddBatchModel.php';
 
 
 if (isset($_SESSION['usernameSession']) && isset($_SESSION['passwordSession'])){
 
+require '../model/AddBatchModel.php';
 
 
          $response=array("status"=>1,"status_message"=>"valid");
