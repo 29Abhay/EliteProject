@@ -1,6 +1,6 @@
 <?php 
 
-require '../../database.php';
+require 'database.php';
 class Enquiry{
   private $enquiry_id;
 	private  $mobile_no;
@@ -168,7 +168,7 @@ class Enquiry{
              if (empty($_POST["c_name"])) 
              {  
                
-               $response=array("status"=>1,"status_message"=>"please enter course name ");
+               $response=array("status"=>0,"status_message"=>"please enter course name ");
              }
             else
             {
@@ -215,7 +215,7 @@ class Enquiry{
     	 	       if(empty($_POST["mobile_no"])) 
                {
                echo "please enter a mobile no";
-               $response=array("status"=>1,"status_message"=>"please enter mobile no ");
+               $response=array("status"=>0,"status_message"=>"please enter mobile no ");
                }
                else
                {   
