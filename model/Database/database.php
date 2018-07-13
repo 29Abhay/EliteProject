@@ -31,9 +31,9 @@ class Database{
                       $stmt=$conn->prepare($create_course_qry);
                       $stmt->execute();
 
-                      $create_batch_qry="CREATE TABLE  IF NOT EXISTS batch (b_id int(20) primary key,b_time time(1),c_id int(20),start_date date ,foreign key (c_id) references course (c_id)
+                     $create_batch_qry="CREATE TABLE  IF NOT EXISTS batch (b_id int(20) primary key,b_time time(1),c_id int(20),start_date date ,foreign key (c_id) references course (c_id)
                                              on delete cascade
-                                              on update cascade)engine=innodb;";
+                                              on update cascade)";
                                               
                       $stmt=$conn->prepare($create_batch_qry);
                       $stmt->execute();
@@ -42,7 +42,7 @@ class Database{
                                              on delete cascade
                                               on update cascade ,foreign key (b_id) references batch (b_id)
                                              on delete cascade
-                                              on update cascade)engine=innodb;";
+                                              on update cascade);";
                                               
                       $stmt=$conn->prepare($create_teach_qry);
                       $stmt->execute();
@@ -50,7 +50,7 @@ class Database{
 
                        $create_skill_qry="CREATE TABLE  IF NOT EXISTS faculty_skills ( mob_no varchar(20), skill varchar(40) ,foreign key (mob_no) references faculty (mob_no)
                                              on delete cascade
-                                              on update cascade)engine=innodb;";
+                                              on update cascade);";
                                               
                       $stmt=$conn->prepare($create_skill_qry);
                       $stmt->execute();
@@ -81,6 +81,10 @@ class Database{
     $stmt=$conn->prepare($create_table);
     $result=$stmt->execute();
 
+    $create_student_joining="CREATE table if not EXISTS student_joining(student_id int PRIMARY KEY AUTO_INCREMENT,batch_id int(20),mobile_no varchar(10),joining_date varchar(10),enquiry_id int,FOREIGN KEY(batch_id) REFERENCES batch(batch_id),FOREIGN KEY(enquiry_id) REFERENCES enquiry(enquiry_id));";
+    $stmt=$conn->prepare($create_student_joining);
+    $result=$stmt->execute();
+
     $create_demo_qry="CREATE TABLE IF NOT EXISTS demo(start_date date,demo1 varchar(20),demo2 varchar(20),demo3 varchar(20),enquiry_id int,batch_id int(20),status varchar(20) DEFAULT 'NO',
       FOREIGN KEY(enquiry_id) REFERENCES enquiry(enquiry_id), FOREIGN KEY (batch_id) REFERENCES batch(b_id));";
 $stmt=$conn->prepare($create_demo_qry);
@@ -96,7 +100,8 @@ $stmt=$conn->prepare($create_demo_qry);
 			}
 
 			
-
+$obj=new Database;
+$obj->getConnection();
  ?>
 
 
