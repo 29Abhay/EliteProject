@@ -7,7 +7,7 @@ $res=$obj2->addadmin();
 }
 else
 {
-    $response=array("status" =>0 ,"status_message" =>"invalid operation");
+    $res=array("status" =>0 ,"status_message" =>"invalid operation");
 }
 header('Content-Type: application/json');
 echo json_encode($res); 
