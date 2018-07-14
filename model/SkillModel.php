@@ -1,6 +1,6 @@
 
 <?php 
-require 'database/database.php';
+require 'Database/database.php';
 
    class skill1{
   private $mob_no;
