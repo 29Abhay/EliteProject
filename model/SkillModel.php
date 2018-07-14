@@ -44,7 +44,7 @@ public function __construct()
 
 public function addskill(){
             
-          
+          try{
         $this->emp->setmob_no(htmlspecialchars($_POST["mob_no"]));
         $this->emp->setskill(htmlspecialchars($_POST["skill"]));
         
@@ -72,7 +72,17 @@ public function addskill(){
              
       
          }
+}
+ catch (PDOException $e) 
+         {
+  
+          if ($e->getCode()==23000)
+       {
+        $response=array("status"=>0,"status_message"=>"duplicate entry");
+      
+       }
 
+           }
 
       
 
@@ -88,4 +98,6 @@ return $response;
        }
      }
  ?>
+
+
 
